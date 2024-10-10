@@ -96,12 +96,13 @@
 <body>
   
 <div class="container">
-  <h2>QUẢN LÝ THÔNG TIN SINH VIÊN</h2>
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h2 class="text-center flex-fill mb-0">QUẢN LÝ THÔNG TIN SINH VIÊN</h2>
+    <a class="btn btn-primary" href="logout.php">Đăng Xuất</a>
+  </div>
 
-  <!-- Nút chuyển sang trang danh sách lớp -->
+
   <a class="btn btn-info mb-3 float-left" href="lophoc.php">Xem Danh Sách Lớp</a>
-
-  <!-- Nút thêm sinh viên mới -->
   <a class="btn btn-primary mb-3 float-right" href="themsinhvien.php">Thêm mới</a>
 
   <?php

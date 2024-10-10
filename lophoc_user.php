@@ -57,6 +57,7 @@
       color: #6c63ff; 
       text-decoration: none; 
     }
+
 	.btn-action {
       display: inline-flex;
       align-items: center;
@@ -73,18 +74,8 @@
       opacity: 0.8;
     }
 
-    .btn-edit {
-      background-color: #ffc107; 
-      color: white;
-    }
-
-    .btn-delete {
-      background-color: #dc3545; 
-      color: white;
-    }
-
-    .btn-edit:hover, .btn-delete:hover {
-      color: white;
+    .btn:hover {
+        transform: scale(1.05);
     }
 
     td {
@@ -95,13 +86,8 @@
 <body>
   
 <div class="container">
-<div class="d-flex justify-content-between align-items-center mb-3">
-    <h2 class="text-center flex-fill mb-0">QUẢN LÝ THÔNG TIN LỚP HỌC</h2>
-    <a class="btn btn-primary" href="logout.php">Đăng Xuất</a>
-  </div>
-  
-  <a class="btn btn-info mb-3 float-left" href="sinhvien.php">Xem Danh Sách Sinh Viên</a>
-  <a class="btn btn-primary mb-3 float-right" href="form_lop.php">Thêm mới</a>
+  <h2>THÔNG TIN LỚP HỌC</h2>
+  <a class="btn btn-primary mb-3 float-right" href="logout.php">Đăng Xuất</a>
 
 
   <?php
@@ -112,14 +98,12 @@
 
     if ($result->num_rows > 0) {
       echo "<table class='table table-hover'>";
-      echo "<thead class='thead-dark'><tr><th>Mã lớp</th><th>Tên lớp</th><th>Sửa</th><th>Xóa</th></tr></thead>";
+      echo "<thead class='thead-dark'><tr><th>Mã lớp</th><th>Tên lớp</th></tr></thead>";
       echo "<tbody>";
       while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td><a href='chitiet_lophoc.php?maLop=" . $row['maLop'] . "'>" . $row['maLop'] . "</a></td>";
-        echo "<td><a href='chitiet_lophoc.php?maLop=" . $row['maLop'] . "'>" . $row['tenLop'] . "</a></td>";
-        echo "<td><a href='sua_lop.php?ma=" . $row["maLop"] . "' class='btn-action btn-edit' title='Sửa'><i class='fas fa-edit'></i></a></td>";
-        echo "<td><a onclick=\"return confirm('Có thực sự muốn xóa không?')\" href='xoa_lop.php?ma=" . $row["maLop"] . "' class='btn-action btn-delete' title='Xóa'><i class='fas fa-trash-alt'></i></a></td>";
+        echo "<td><a href='chitiet_lophoc_user.php?maLop=" . $row['maLop'] . "'>" . $row['maLop'] . "</a></td>";
+        echo "<td><a href='chitiet_lophoc_user.php?maLop=" . $row['maLop'] . "'>" . $row['tenLop'] . "</a></td>";
         echo "</tr>";
       }
       echo "</tbody></table>";
@@ -129,7 +113,6 @@
 
     $conn->close();
   ?>
-
 
 </div>
 

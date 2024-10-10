@@ -48,40 +48,46 @@
 <div class="container">
   <h2>THÊM SINH VIÊN</h2>
   <form action="xuly_themsinhvien.php" method="post">
-    <div class="form-group">
-      <label for="masv">Mã sinh viên:</label>
-      <input type="text" class="form-control" id="masv" placeholder="Nhập mã sinh viên" name="txtMaSV" required>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="masv">Mã sinh viên:</label>
+        <input type="text" class="form-control" id="masv" placeholder="Nhập mã sinh viên" name="txtMaSV" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="holot">Họ lót:</label>
+        <input type="text" class="form-control" id="holot" placeholder="Nhập họ lót" name="txtHoLot" required>
+      </div>
     </div>
-    <div class="form-group">
-      <label for="holot">Họ lót:</label>
-      <input type="text" class="form-control" id="holot" placeholder="Nhập họ lót" name="txtHoLot" required>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="tensv">Tên sinh viên:</label>
+        <input type="text" class="form-control" id="tensv" placeholder="Nhập tên sinh viên" name="txtTenSV" required>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="ngaysinh">Ngày sinh:</label>
+        <input type="date" class="form-control" id="ngaysinh" name="txtNgaySinh" required max="2006-12-31">
+      </div>
     </div>
-    <div class="form-group">
-      <label for="tensv">Tên sinh viên:</label>
-      <input type="text" class="form-control" id="tensv" placeholder="Nhập tên sinh viên" name="txtTenSV" required>
-    </div>
-    <div class="form-group">
-      <label for="ngaysinh">Ngày sinh:</label>
-      <input type="date" class="form-control" id="ngaysinh" name="txtNgaySinh" required>
-    </div>
-    <div class="form-group">
-      <label for="gioitinh">Giới tính:</label>
-      <select class="form-control" id="gioitinh" name="txtGioiTinh" required>
-        <option value="Nam">Nam</option>
-        <option value="Nữ">Nữ</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="malop">Lớp học:</label>
-      <select class="form-control" id="malop" name="txtMaLop" required>
-        <?php
-            $sql = "SELECT maLop, tenLop FROM lophoc";
-            $result = $conn->query($sql);
-            while ($row = $result->fetch_assoc()) {
-                echo "<option value='".$row['maLop']."'>".$row['maLop']." - ".$row['tenLop']."</option>";
-            }
-        ?>
-      </select>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="gioitinh">Giới tính:</label>
+        <select class="form-control" id="gioitinh" name="txtGioiTinh" required>
+          <option value="Nam">Nam</option>
+          <option value="Nữ">Nữ</option>
+        </select>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="malop">Lớp học:</label>
+        <select class="form-control" id="malop" name="txtMaLop" required>
+          <?php
+              $sql = "SELECT maLop, tenLop FROM lophoc";
+              $result = $conn->query($sql);
+              while ($row = $result->fetch_assoc()) {
+                  echo "<option value='".$row['maLop']."'>".$row['maLop']." - ".$row['tenLop']."</option>";
+              }
+          ?>
+        </select>
+      </div>
     </div>
 
     <button type="submit" class="btn btn-primary btn-block">Thêm</button>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 03, 2024 lúc 09:38 PM
+-- Thời gian đã tạo: Th10 10, 2024 lúc 06:27 PM
 -- Phiên bản máy phục vụ: 10.4.27-MariaDB
 -- Phiên bản PHP: 7.4.33
 
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `ql_sinhvien`
 --
-CREATE DATABASE IF NOT EXISTS `ql_sinhvien` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ql_sinhvien`;
 
 -- --------------------------------------------------------
 
@@ -67,10 +65,34 @@ CREATE TABLE `sinhvien` (
 --
 
 INSERT INTO `sinhvien` (`maSV`, `hoLot`, `tenSV`, `ngaySinh`, `gioiTinh`, `maLop`) VALUES
-('110121137', 'Lê Trực', 'Tín', '2003-06-10', 'Nữ', 'DA21TTC'),
+('110121137', 'Lê Trực', 'Tín', '2003-06-10', 'Nam', 'DA21TTC'),
 ('11115555', 'Nguyễn Thanh', 'Thanh', '1985-08-24', 'Nữ', 'VB23TT'),
 ('820121019', 'Trần Tuấn', 'Hải', '1994-08-26', 'Nam', 'VB23TT'),
 ('820121042', 'Bùi Duy', 'Khang', '1996-11-23', 'Nam', 'VB23TT');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `role` enum('admin','user') NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Đang đổ dữ liệu cho bảng `users`
+--
+
+INSERT INTO `users` (`id`, `username`, `password`, `role`) VALUES
+(1, 'tinle', '$2y$10$Z.SiYIjhx71ZIJ/g39xzcua/zMqPOm09BlsfKXoQVKjrANvV39ELq', 'user'),
+(2, 'gv', '$2y$10$b5W9k1nlglBFVwx93NksZOhIUHuguv5hJhiVdt48N5ndGrnpuitLi', 'admin'),
+(3, 'gv1', '$2y$10$I9TPfBFAZLS1PN2xKrmoH.7Hn39UQ8aDo9.YwmR9pCExVefDweeJi', 'admin'),
+(4, 'sv', '$2y$10$kJl5CJRtyqxkYnqcmQsbhePfshCKJCIvtA9NUm1jnwpthg7nVs6US', 'user'),
+(5, 'sv1', '$2y$10$n5AV21IM1rxT3EP8L0jeyeQXu.dR4tzOcrTg.wq8vXkLKnfw/Ixlq', 'user');
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -88,6 +110,22 @@ ALTER TABLE `lophoc`
 ALTER TABLE `sinhvien`
   ADD PRIMARY KEY (`maSV`),
   ADD KEY `maLop` (`maLop`);
+
+--
+-- Chỉ mục cho bảng `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT cho các bảng đã đổ
+--
+
+--
+-- AUTO_INCREMENT cho bảng `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Các ràng buộc cho các bảng đã đổ

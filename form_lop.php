@@ -71,6 +71,7 @@
     </div>
 
     <button type="submit" class="btn btn-primary btn-block">Thêm mới</button>
+    <a href="lophoc.php" class="btn btn-secondary btn-block">Hủy</a>
   </form>
 </div>
 

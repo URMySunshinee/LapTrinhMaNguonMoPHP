@@ -113,6 +113,7 @@
       <button type="submit" class="btn btn-primary btn-block">
         <i class="fas fa-save"></i> Cập nhật
       </button>
+      <a href="lophoc.php" class="btn btn-secondary btn-block">Hủy</a>
     </form>
   </div>
 </div>
